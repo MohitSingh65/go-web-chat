@@ -24,16 +24,21 @@
         #message-input {
             display: flex;
             padding: 10px;
+            gap: 10px; /* Add spacing between inputs and button */
         }
         #message-input input {
-            flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            width: 150px; /* Set a fixed width for the username input */
+            max-width: 200px; /* Optional: Set a maximum width */
+        }
+        #message-input input#message {
+            flex: 1; /* Allow the message input to take up remaining space */
+            max-width: 400px; /* Optional: Set a maximum width */
         }
         #message-input button {
             padding: 10px 20px;
-            margin-left: 10px;
             background-color: #28a745;
             color: white;
             border: none;
@@ -41,7 +46,7 @@
             cursor: pointer;
         }
     </style>
-</head>
+   </head>
 <body>
     <div id="chat"></div>
     <div id="message-input">
