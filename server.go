@@ -51,7 +51,7 @@ func initDB() {
 }
 
 func saveMessage(username, text string) {
-	_, err := db.Exec("INSERT INTO messages (username, text, time) VALUES (?, ?, ?)", username, text, time.Now().Format("2006-01-02 15:04:05"))
+	_, err := db.Exec("INSERT INTO messages (username, text, time) VALUES (?, ?, ?)", username, text, time.Now().Format("2006-01-02 03:04"))
 	if err != nil {
 		log.Println("Error saving message:", err)
 	}
@@ -119,6 +119,9 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request) {
 			log.Println("Error reading message:", err)
 			break
 		}
+
+		// Add the current time to the message
+		msg.Time = time.Now().Format("2006-01-02 03:04")
 
 		// Save and broadcast the message
 		saveMessage(msg.Username, msg.Text)
